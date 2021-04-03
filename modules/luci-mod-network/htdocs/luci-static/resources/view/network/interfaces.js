@@ -595,15 +595,19 @@ return view.extend({
 				o = nettools.replaceOption(s, 'advanced', form.Flag, 'defaultroute', _('Use default gateway'), _('If unchecked, no default route is configured'));
 				o.default = o.enabled;
 
-				o = nettools.replaceOption(s, 'advanced', form.Flag, 'peerdns', _('Use DNS servers advertised by peer'), _('If unchecked, the advertised DNS server addresses are ignored'));
-				o.default = o.enabled;
+				if (protoval != 'static') {
+					o = nettools.replaceOption(s, 'advanced', form.Flag, 'peerdns', _('Use DNS servers advertised by peer'), _('If unchecked, the advertised DNS server addresses are ignored'));
+					o.default = o.enabled;
+				}
 
 				o = nettools.replaceOption(s, 'advanced', form.DynamicList, 'dns', _('Use custom DNS servers'));
-				o.depends('peerdns', '0');
+				if (protoval != 'static')
+					o.depends('peerdns', '0');
 				o.datatype = 'ipaddr';
 
 				o = nettools.replaceOption(s, 'advanced', form.DynamicList, 'dns_search', _('DNS search domains'));
-				o.depends('peerdns', '0');
+				if (protoval != 'static')
+					o.depends('peerdns', '0');
 				o.datatype = 'hostname';
 
 				o = nettools.replaceOption(s, 'advanced', form.Value, 'dns_metric', _('DNS weight'), _('The DNS server entries in the local resolv.conf are primarily sorted by the weight specified here'));
@@ -825,7 +829,7 @@ return view.extend({
 									}
 
 									return m.save(function() {
-										uci.add('network', 'interface', nameval);
+										var section_id = uci.add('network', 'interface', nameval);
 
 										protoclass.set('proto', protoval);
 
