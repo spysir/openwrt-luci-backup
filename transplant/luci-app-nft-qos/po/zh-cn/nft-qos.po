@@ -182,7 +182,7 @@ msgstr "协议"
 #: applications/luci-app-nft-qos/luasrc/controller/nft-qos.lua:21
 #: applications/luci-app-nft-qos/luasrc/model/cbi/nft-qos/nft-qos.lua:24
 msgid "QoS over Nftables"
-msgstr "NFT-QOS"
+msgstr "NFT-QoS"
 
 #: applications/luci-app-nft-qos/luasrc/controller/nft-qos.lua:13
 #: applications/luci-app-nft-qos/luasrc/model/cbi/nft-qos/nft-qos.lua:137
@@ -261,3 +261,12 @@ msgstr "例如https, 23（用逗号分隔）"
 #: applications/luci-app-nft-qos/luasrc/view/nft-qos/rate.htm:44
 msgid "kB"
 msgstr "kB"
+
+msgid "Limit Rate by IP Address"
+msgstr "IP地址限速"
+
+msgid "Limit Rate by Mac Address"
+msgstr "MAC地址限速"
+
+msgid "Traffic Priority"
+msgstr "流量优先"
